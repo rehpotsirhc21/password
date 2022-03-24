@@ -1,20 +1,19 @@
 // Assignment code here
 // ask for password legnth
 var charSet = [];
-var passwordLength;
-var numArray;
-var specArray;
+var passwordLength; 
+
+
 
 //upper or lower case letters
 var letters = () => {
- 
-
   var alphaChar = prompt(
     'would you like your letters to be lower case, upper case or both? type "1" for lower, type "2" for upper or type "3" for both.'
   );
+  alphaChar = parseInt(alphaChar);
   if (!alphaChar) {
     alert("You must select an option. Please try again");
-  } else if (alphaChar == 1) {
+  } else if (alphaChar === 1) {
     charSet.push(
       "a",
       "b",
@@ -43,7 +42,7 @@ var letters = () => {
       "y",
       "z"
     );
-  } else if (alphaChar == 2) {
+  } else if (alphaChar === 2) {
     charSet.push(
       "A",
       "B",
@@ -72,7 +71,7 @@ var letters = () => {
       "Y",
       "Z"
     );
-  } else if (alphaChar == 3) {
+  } else if (alphaChar === 3) {
     charSet.push(
       "A",
       "B",
@@ -131,7 +130,6 @@ var letters = () => {
     alert("you have entered an invalid value. Please try again! .");
     letters();
   }
-  
 };
 // should numbers be inlcuded
 var numbers = () => {
@@ -144,9 +142,9 @@ var numbers = () => {
     numbers();
   } else if (numericChar === "y") {
     charSet.push(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-    // special();
+    
   } else if (numericChar === "n") {
-    // special();
+    alert(`You chose not to include numbers`);
   } else {
     alert("You did not choose a valid option, please try again!");
     numbers();
@@ -179,10 +177,8 @@ var special = () => {
       "()",
       "_"
     );
-
-    
   } else if (specialChar === "n") {
-    
+      alert(`You chose not to include special characters`)
   } else {
     alert("You did not choose a valid option. Please try again!");
     special();
@@ -191,7 +187,7 @@ var special = () => {
 
 var length = () => {
   passwordLength = prompt(
-    "How long would you like your password to be? Please provide a whole number between 8 and 128."
+    "Welcome to Random Paswword Generater! How long would you like your password to be? Please provide a whole number between 8 and 128."
   );
   passwordLength = parseInt(passwordLength);
   if (!passwordLength) {
@@ -203,41 +199,27 @@ var length = () => {
     alert(
       "You have chosen a number that does not meet the criteria. Please try again!"
     );
-    length(); }
-  // } else {
-   
-  //   var pswd = [];
-  //   var random;
-  //   for (let i = 0; i < passwordLength; i++) {
-  //     random = Math.floor(Math.random() * charSet.length);
-  //     pswd.push(charSet[random]);
-  //     var password = pswd.join("");
-  //   }
-
-  //   console.log(pswd);
-  //   alert(`Your password is: ${password}`);
-  // }
+    length();
+  }
 };
 
 var generatePassword = () => {
-  alert(
-    "Welcome! Please answer the following questions about your password. By answering each question you choose to include or exclude types of characters from the list of possiblities."
-  );
   length();
   letters();
-  numbers(); 
+  numbers();
   special();
-  
-  var pswd = [];
-    var random;
-    for (let i = 0; i < passwordLength; i++) {
-      random = Math.floor(Math.random() * charSet.length);
-      pswd.push(charSet[random]);
-      var password = pswd.join("");
-    }
 
-    console.log(pswd);
-    alert(`Your password is: ${password}`);
+  var pswd = [];
+  var random;
+  for (let i = 0; i < passwordLength; i++) {
+    random = Math.floor(Math.random() * charSet.length);
+    pswd.push(charSet[random]);
+    var password = pswd.join("");
+  }
+
+  console.log(pswd);
+  alert(`Your password is: ${password}`);
+  return password;
 };
 
 // Get references to the #generate element
@@ -245,10 +227,13 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+   
+   
   var password = generatePassword();
+
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.textContent = password;
 }
 
 // Add event listener to generate button
