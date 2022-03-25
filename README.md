@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator 
 ## user story
 AS AN employee with access to sensitive data
 I WANT to randomly generate a password that meets certain criteria
