@@ -22,4 +22,4 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 
-![full site screen print](./screencapture-127-0-0-1-5500-index-html-2022-03-24-18_58_43.png)
+![full site screen print](./assets/screencapture-127-0-0-1-5500-index-html-2022-03-24-18_58_43.png)
